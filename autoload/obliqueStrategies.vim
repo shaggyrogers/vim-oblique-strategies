@@ -6,7 +6,7 @@
 "                        solving and inspire creativity.
 " Author:                Michael De Pasquale <github.com/shaggyrogers>
 " Creation Date:         2019-09-14
-" Modification Date:     2024-04-03
+" Modification Date:     2025-09-05
 "
 " Sources
 " -------
@@ -29,13 +29,13 @@ function! obliqueStrategies#Get()
     return s:generator.Next()
 endfunction
 
-" Get the entire list of aphorisms.
+" Returns a copy of the entire list of aphorisms.
 function! obliqueStrategies#GetAll()
-    return s:generator.lines
+    return copy(s:generator.lines)
 endfunction
 
 " Builds a random aphorism generator.
-function! s:RandomSelector() abort "{{{
+function! s:RandomSelector() abort
     if !has('lambda')
         throw 'Error: lambda must be supported.'
     endif
@@ -71,7 +71,7 @@ function! s:RandomSelector() abort "{{{
     let l:generator.state = l:generator.RandomSeed() % l:generator.count
 
     return l:generator
-endfunction "}}}
+endfunction
 
 
 let s:strategies = {
